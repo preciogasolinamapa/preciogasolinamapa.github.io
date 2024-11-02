@@ -28,7 +28,7 @@ const posElt = document.getElementById('pos');
 const posLinkElt = document.querySelector('#posLink > a');
 
 // eventos
-windows.addEventListener('load', geolocalizacionActual)
+windows.addEventListener('load', geolocalizacionActual);
 boton.addEventListener('click', busquedaActual);
 boton.addEventListener('click', busquedaUltimaSemana);
 
