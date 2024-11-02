@@ -49,7 +49,7 @@ function geoposOK(pos) {
     var long = pos.coords.longitude;
 
     //Mostramos la posición
-    posElt.textContent = `Latitud: ${lat}, Longitud: ${long}`;
+    posElt.textContent = `Lat: ${lat} Long: ${long}`;
 
     //generamos enlace a la posición
     posLinkElt.href = `https://maps.google.com/?q=${lat},${long}`;
