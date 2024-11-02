@@ -21,7 +21,7 @@
 
 const boton = document.getElementById("boton-buscar");
 const respuestaSP95 = document.getElementById("respuesta-SP95");
-const respuestaGasoilA = document.getElementById("respuesta-GasoilA")
+const respuestaGasoilA = document.getElementById("respuesta-GasoilA");
 const fechaActual = document.getElementById("fecha-actual");
 
 const posElt = document.getElementById('pos');
