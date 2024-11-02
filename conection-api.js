@@ -37,7 +37,45 @@ let f = new Date();
 fechaActual.innerHTML += f.getDate().toString().padStart(2, "0") + "/" + (f.getMonth()+1).toString().padStart(2, "0") + "/" + f.getFullYear(); 
 
 
+function geolocalizacionActual() {
+    // Devuelve un objeto como respuesta que se usa para la funcion callback tanto de OK, como de error
+    // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
+    navigator.geolocation.getCurrentPosition(geoposOK, geoposKO);
+}
 
+function geoposOK(pos) {
+    //Obtenemos latitud y longitud
+    var lat = pos.coords.latitude;
+    var long = pos.coords.longitude;
+
+    //Mostramos la posición
+    posElt.textContent = `Latitud: ${lat}, Longitud: ${long}`;
+
+    //generamos enlace a la posición
+    posLinkElt.href = `https://maps.google.com/?q=${lat},${long}`;
+    posLinkElt.textContent = 'Mostrar tu posición en un mapa';
+}
+
+/** @param {GeolocationPositionError} err */
+function geoposKO(err) {
+    console.warn(err.message);
+    let msg;
+    switch (err.code) {
+        case err.PERMISSION_DENIED:
+            msg = "No nos has dado permiso para obtener tu posición";
+            break;
+        case err.POSITION_UNAVAILABLE:
+            msg = "Tu posición actual no está disponible";
+            break;
+        case err.TIMEOUT:
+            msg = "No se ha podido obtener tu posición en un tiempo prudencial";
+            break;
+        default:
+            msg = "Error desconocido";
+            break;
+    }
+    posElt.textContent = msg;
+}
 
 
 
